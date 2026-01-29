@@ -1,0 +1,823 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MY PORTFOLIO</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500&family=Inter:wght@300;400;500&display=swap');
+        
+        body {
+            font-family: 'Cormorant Garamond', serif;
+        }
+        
+        .font-inter {
+            font-family: 'Inter', sans-serif;
+        }
+        
+        .hero-slide {
+            transition: opacity 1.5s ease-in-out;
+        }
+        
+        .tracking-widest-custom {
+            letter-spacing: 0.3em;
+        }
+
+        /* Scroll Animation Utilities */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+
+        .fade-in.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .fade-in-left {
+            opacity: 0;
+            transform: translateX(-50px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+
+        .fade-in-left.active {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .fade-in-right {
+            opacity: 0;
+            transform: translateX(50px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+
+        .fade-in-right.active {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .scale-in {
+            opacity: 0;
+            transform: scale(0.9);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+
+        .scale-in.active {
+            opacity: 1;
+            transform: scale(1);
+        }
+
+        /* Stagger animation for children */
+        .stagger-item {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+        }
+
+        .stagger-item.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Parallax effect */
+        .parallax-slow {
+            transition: transform 0.5s cubic-bezier(0.33, 1, 0.68, 1);
+        }
+
+        /* Floating animation */
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .float-animation {
+            animation: float 3s ease-in-out infinite;
+        }
+
+        /* Gradient animation for hero */
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .animated-gradient {
+            background: linear-gradient(-45deg, rgba(0,0,0,0.3), rgba(0,0,0,0.5), rgba(0,0,0,0.4), rgba(0,0,0,0.6));
+            background-size: 400% 400%;
+            animation: gradientShift 15s ease infinite;
+        }
+
+        /* Counter animation */
+        @keyframes countUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .count-animation {
+            animation: countUp 0.8s ease-out forwards;
+        }
+
+        /* Skill badge hover effect */
+        .skill-badge {
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .skill-badge::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .skill-badge:hover::before {
+            left: 100%;
+        }
+
+        .skill-badge:hover {
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+        }
+
+        /* Image reveal effect */
+        .image-reveal {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .image-reveal::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: white;
+            transform: translateX(-100%);
+            transition: transform 0.8s cubic-bezier(0.77, 0, 0.175, 1);
+        }
+
+        .image-reveal.active::after {
+            transform: translateX(100%);
+        }
+
+        /* Card hover effects */
+        .project-card {
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px);
+        }
+
+        /* Text reveal animation */
+        .text-reveal {
+            display: inline-block;
+            overflow: hidden;
+        }
+
+        .text-reveal span {
+            display: inline-block;
+            opacity: 0;
+            transform: translateY(100%);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+
+        .text-reveal.active span {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Header scroll effect */
+        header {
+            transition: all 0.3s ease;
+        }
+
+        header.scrolled {
+            background: rgba(255, 255, 255, 0.98);
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Smooth scroll behavior */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Gallery item animation */
+        .gallery-item {
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .gallery-item:hover {
+            transform: scale(1.05) rotate(1deg);
+            z-index: 10;
+        }
+    </style>
+</head>
+<body class="bg-white text-gray-800">
+    
+    <!-- Header/Navigation -->
+    <header class="fixed top-0 left-0 right-0 bg-white/95 backdrop-blur-sm z-50 shadow-sm">
+        <div class="container mx-auto px-6 lg:px-12 py-5 flex justify-between items-center">
+            <div class="text-xs tracking-widest-custom font-light">
+                MY PORTFOLIO
+            </div>
+            <nav class="hidden md:flex gap-8 lg:gap-12">
+                <a href="#about" class="text-xs tracking-wider text-gray-600 hover:text-gray-900 transition">ABOUT ME</a>
+                <a href="#projects" class="text-xs tracking-wider text-gray-600 hover:text-gray-900 transition">MY PROJECT</a>
+                <a href="#blog" class="text-xs tracking-wider text-gray-600 hover:text-gray-900 transition">MY BLOG</a>
+            </nav>
+            <!-- Mobile Menu Button -->
+            <button class="md:hidden" onclick="toggleMenu()">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                </svg>
+            </button>
+        </div>
+        <!-- Mobile Menu -->
+        <div id="mobileMenu" class="hidden md:hidden bg-white border-t">
+            <nav class="flex flex-col py-4 px-6 gap-4">
+                <a href="#about" class="text-xs tracking-wider text-gray-600">ABOUT ME</a>
+                <a href="#projects" class="text-xs tracking-wider text-gray-600">MY PROJECT</a>
+                <a href="#blog" class="text-xs tracking-wider text-gray-600">MY BLOG</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section - Who I Am (with Slideshow) -->
+    <section class="relative h-screen overflow-hidden">
+        <!-- Slide 1 - Group Photo -->
+        <div id="slide1" class="hero-slide absolute inset-0 opacity-100">
+            <div class="absolute inset-0 bg-cover bg-center" style="background-image: url('image/slideshow1.png');">
+                <div class="absolute inset-0 animated-gradient"></div>
+            </div>
+        </div>
+        
+        <!-- Slide 2 - Police Building -->
+        <div id="slide2" class="hero-slide absolute inset-0 opacity-0">
+            <div class="absolute inset-0 bg-cover bg-center" style="background-image: url('image/slideshow2.png');">
+                <div class="absolute inset-0 animated-gradient"></div>
+            </div>
+        </div>
+
+        <!-- Hero Content -->
+        <div class="absolute inset-0 flex items-center justify-center z-10">
+            <div class="text-center text-white px-6 max-w-4xl">
+                <h1 class="text-5xl md:text-7xl lg:text-8xl font-light tracking-widest-custom mb-6 fade-in active" style="animation-delay: 0.2s;">
+                    WHO I AM ?
+                </h1>
+                <p class="text-sm md:text-base lg:text-lg font-inter font-light leading-relaxed mb-10 max-w-3xl mx-auto fade-in active" style="animation-delay: 0.4s;">
+                    Here I am—a young explorer carving my own path, trying new things, gaining fresh experiences, and meeting new people along the way. While I'm still young, it's the perfect time to discover the world and chase curiosity 🌍✨<br>
+                    Curious about my journey? Go ahead and scroll to see the stories behind it all 🚀
+                </p>
+                <div class="flex flex-col sm:flex-row gap-4 justify-center fade-in active" style="animation-delay: 0.6s;">
+                    <a href="#about" class="border-2 border-white px-8 py-3 text-sm tracking-wider hover:bg-white hover:text-gray-900 transition transform hover:scale-105">
+                        Know More
+                    </a>
+                    <a href="https://drive.google.com/file/d/1zc0zpTiA52boXcaxbF2NFBh6pk8C7y-E/view?usp=sharing" class="bg-white text-gray-900 border-2 border-white px-8 py-3 text-sm tracking-wider hover:bg-transparent hover:text-white transition transform hover:scale-105">
+                        Curriculum Vitae
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="bg-gray-900 text-white py-16">
+        <div class="container mx-auto px-6">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
+                <div class="fade-in stat-item">
+                    <div class="text-6xl md:text-7xl font-light mb-3 counter" data-target="3">0</div>
+                    <div class="text-sm tracking-wider font-inter font-light">Winner in National/Regional Competitions</div>
+                </div>
+                <div class="fade-in stat-item" style="transition-delay: 0.2s;">
+                    <div class="text-6xl md:text-7xl font-light mb-3 counter" data-target="1">0</div>
+                    <div class="text-sm tracking-wider font-inter font-light">Project Funded Through Innovation Grant</div>
+                </div>
+                <div class="fade-in stat-item" style="transition-delay: 0.4s;">
+                    <div class="text-6xl md:text-7xl font-light mb-3 counter" data-target="20">0</div>
+                    <div class="text-sm tracking-wider font-inter font-light">National-Level Competitions Participated</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Me Section -->
+    <section id="about" class="py-20 bg-white">
+        <div class="container mx-auto px-6">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center max-w-6xl mx-auto">
+                <!-- Left: Text Content -->
+                <div class="order-2 lg:order-1 fade-in-left">
+                    <h2 class="text-5xl md:text-6xl font-light mb-8">About Me</h2>
+                    <div class="space-y-5 text-gray-700 font-inter leading-relaxed">
+                        <p>
+                        Hello👋, you can call me Aly😄. I am an undergraduate student majoring in Computer Engineering Technology with a strong passion for technology and innovation. My interests and expertise include web development, Internet of Things (IoT), application development, and machine learning.
+                        </p>
+                        <p>
+                            I continuously enhance my skills by exploring new technologies, working on hands-on projects, and keeping up with the rapid growth of the digital landscape. I am highly motivated to learn, adapt, and contribute to impactful digital solutions.
+                        </p>
+                    </div>
+
+                    <!-- Skills Section -->
+                    <div class="mt-12 space-y-8">
+                        <!-- Hard Skills -->
+                        <div class="skills-container">
+                            <h3 class="text-2xl font-light mb-4">Hard Skills</h3>
+                            <div class="flex flex-wrap gap-3">
+                                <span class="skill-badge px-6 py-2.5 bg-gray-900 text-white rounded-full text-sm font-medium cursor-default">PHP</span>
+                                <span class="skill-badge px-6 py-2.5 bg-gray-900 text-white rounded-full text-sm font-medium cursor-default">Laravel</span>
+                                <span class="skill-badge px-6 py-2.5 bg-gray-900 text-white rounded-full text-sm font-medium cursor-default">Python</span>
+                                <span class="skill-badge px-6 py-2.5 bg-gray-900 text-white rounded-full text-sm font-medium cursor-default">TensorFlow</span>
+                                <span class="skill-badge px-6 py-2.5 bg-gray-900 text-white rounded-full text-sm font-medium cursor-default">Data Analysis</span>
+                                <span class="skill-badge px-6 py-2.5 bg-gray-900 text-white rounded-full text-sm font-medium cursor-default">WordPress</span>
+                                <span class="skill-badge px-6 py-2.5 bg-gray-900 text-white rounded-full text-sm font-medium cursor-default">Figma</span>
+                                <span class="skill-badge px-6 py-2.5 bg-gray-900 text-white rounded-full text-sm font-medium cursor-default">Cloud Computing</span>
+                                <span class="skill-badge px-6 py-2.5 bg-gray-900 text-white rounded-full text-sm font-medium cursor-default">IoT Development</span>
+                            </div>
+                        </div>
+
+                        <!-- Soft Skills -->
+                        <div class="skills-container">
+                            <h3 class="text-2xl font-light mb-4">Soft Skills</h3>
+                            <div class="flex flex-wrap gap-3">
+                                <span class="skill-badge px-6 py-2.5 bg-gray-900 text-white rounded-full text-sm font-medium cursor-default">Teamwork</span>
+                                <span class="skill-badge px-6 py-2.5 bg-gray-900 text-white rounded-full text-sm font-medium cursor-default">Collaboration</span>
+                                <span class="skill-badge px-6 py-2.5 bg-gray-900 text-white rounded-full text-sm font-medium cursor-default">Communication</span>
+                                <span class="skill-badge px-6 py-2.5 bg-gray-900 text-white rounded-full text-sm font-medium cursor-default">Time Management</span>
+                                <span class="skill-badge px-6 py-2.5 bg-gray-900 text-white rounded-full text-sm font-medium cursor-default">Creativity</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Right: Image -->
+                <div class="order-1 lg:order-2 fade-in-right">
+                    <div class="rounded-lg overflow-hidden shadow-2xl image-reveal">
+                        <img src="image/foto aboutme.png" alt="Profile" class="w-full h-auto object-cover">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Organizational Experience Section -->
+    <section class="py-20 bg-white">
+        <div class="container mx-auto px-6">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center max-w-6xl mx-auto">
+                <!-- Left: Image -->
+                <div class="fade-in-left">
+                    <div class="rounded-lg overflow-hidden shadow-2xl image-reveal">
+                        <img src="image/foto organisasi.png" alt="Organizational Experience" class="w-full h-auto object-cover">
+                    </div>
+                </div>
+                
+                <!-- Right: Text Content -->
+                <div class="fade-in-right">
+                    <h2 class="text-5xl md:text-6xl font-light mb-8 border-b pb-4">Organizational Experience</h2>
+                    
+                    <div class="space-y-8">
+                        <!-- Position 1 -->
+                        <div class="stagger-item">
+                            <h3 class="text-xl font-medium mb-2">Secretary of Robotics Department, UKM Pengembangan Pengetahuan June 2024 – June 2025</h3>
+                            <ul class="space-y-3 text-gray-700 font-inter text-sm leading-relaxed ml-5">
+                                <li class="list-disc">Ensure that all activities organized by the department are on schedule, and prepare comprehensive reports related to departmental activities.</li>
+                                <li class="list-disc">Coordinate and supervise staff within the robotics department to foster a productive and collaborative environment.</li>
+                                <li class="list-disc">Facilitate effective communication between team members and other departments to streamline processes and improve efficiency.</li>
+                            </ul>
+                        </div>
+                        
+                        <!-- Position 2 -->
+                        <div class="stagger-item" style="transition-delay: 0.2s;">
+                            <h3 class="text-xl font-medium mb-2">Robotics Research Team Member, UKM Pengembangan Pengetahuan May 2024 – Present</h3>
+                            <ul class="space-y-3 text-gray-700 font-inter text-sm leading-relaxed ml-5">
+                                <li class="list-disc">Conduct research and development of robots for Technoclass training sessions and the Polines Robotic Contest.</li>
+                                <li class="list-disc">Participate in national-level robotics competitions representing the institution.</li>
+                                <li class="list-disc">Enhance team knowledge and skills in robotics through regular study and collaboration sessions.</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+    </section>
+
+     <!-- My Activity Section -->
+    <section class="py-20 bg-gray-50">
+        <div class="container mx-auto px-6">
+            <!-- Section Header -->
+            <div class="text-center mb-12 max-w-4xl mx-auto fade-in">
+                <h2 class="text-5xl md:text-6xl font-light mb-6">My Activity</h2>
+                <p class="text-gray-700 font-inter leading-relaxed">
+                    A summary of my journey participating in various robotics, technology, and innovation project competitions. Each activity provided new experiences in developing automation systems and robot programming.
+                </p>
+            </div>
+
+            <!-- Activity Cards -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
+                
+                <!-- Card 1 -->
+                <div class="bg-white rounded-lg overflow-hidden shadow-lg hover:shadow-2xl transition project-card scale-in">
+                    <div class="h-64 overflow-hidden">
+                        <img src="image/TECHNODAY UNNES 2025.png" alt="TECHNODAY UNNES 2025" class="w-full h-full object-cover hover:scale-110 transition duration-500">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-2xl font-light mb-4 text-center border-b pb-3">TECHNODAY UNNES 2025</h3>
+                        <p class="text-gray-600 font-inter text-sm leading-relaxed">
+                            Successfully reached the round of 16 with a robot designed for competitive challenges.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="bg-white rounded-lg overflow-hidden shadow-lg hover:shadow-2xl transition project-card scale-in" style="transition-delay: 0.2s;">
+                    <div class="h-64 overflow-hidden">
+                        <img src="image/PLN SustainAction 2025.png" alt="PLN SustainAction 2025" class="w-full h-full object-cover hover:scale-110 transition duration-500">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-2xl font-light mb-4 text-center border-b pb-3">PLN SustainAction 2025</h3>
+                        <p class="text-gray-600 font-inter text-sm leading-relaxed">
+                            Lyvotem proudly earned 3rd Place at PLN SustainAction 2025, showcasing innovative solutions.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="bg-white rounded-lg overflow-hidden shadow-lg hover:shadow-2xl transition project-card scale-in" style="transition-delay: 0.4s;">
+                    <div class="h-64 overflow-hidden">
+                        <img src="image/TECHNOCORNER UGM 2025.png" alt="TECHNOCORNER UGM 2025" class="w-full h-full object-cover hover:scale-110 transition duration-500">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-2xl font-light mb-4 text-center border-b pb-3">TECHNOCORNER UGM 2025</h3>
+                        <p class="text-gray-600 font-inter text-sm leading-relaxed">
+                            Reached the top eight with a remote-controlled robot demonstrating advanced capabilities.
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- My Project Section -->
+    <section id="projects" class="py-20 bg-gray-50">
+        <div class="container mx-auto px-6">
+            <!-- Section Header -->
+            <div class="text-center mb-12 max-w-4xl mx-auto fade-in">
+                <h2 class="text-5xl md:text-6xl font-light mb-6">My Projects</h2>
+                <p class="text-gray-700 font-inter leading-relaxed">
+                    A collection of projects I have worked on, including web development, IoT, and AI applications, showcasing my growth, creativity, and passion for technology.
+                </p>
+            </div>
+
+            <!-- Project Cards -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-7xl mx-auto">
+                
+                <!-- Card 1 - Engineering Project -->
+                <div class="bg-white rounded-lg overflow-hidden shadow-lg hover:shadow-2xl transition project-card scale-in">
+                    <div class="h-64 overflow-hidden">
+                        <img src="image/Simaku.png" alt="Engineering Project" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-2xl font-light mb-4 text-center border-b pb-3">SIMAKU</h3>
+                        <p class="text-gray-600 font-inter text-sm leading-relaxed mb-6">
+                            A university-wide system for managing student tuition (UKT) payments used by both campus administrators and students.
+                        </p>
+                        <div class="text-center">
+                            <a href="project-simaku.html" class="inline-block border-2 border-gray-900 px-6 py-2 text-sm tracking-wider hover:bg-gray-900 hover:text-white transition transform hover:scale-105">
+                                Show More
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 2 - Team Collaboration -->
+                <div class="bg-white rounded-lg overflow-hidden shadow-lg hover:shadow-2xl transition project-card scale-in" style="transition-delay: 0.2s;">
+                    <div class="h-64 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=800" alt="Team Collaboration" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-2xl font-light mb-4 text-center border-b pb-3">PLN SustainAction 2025</h3>
+                        <p class="text-gray-600 font-inter text-sm leading-relaxed mb-6">
+                            Lyvotem proudly earned 3rd Place at PLN SustainAction 2025, showcasing innovative solutions.
+                        </p>
+                        <div class="text-center">
+                            <a href="project-pln.html" class="inline-block border-2 border-gray-900 px-6 py-2 text-sm tracking-wider hover:bg-gray-900 hover:text-white transition transform hover:scale-105">
+                                Show More
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 3 - Robotics -->
+                <div class="bg-white rounded-lg overflow-hidden shadow-lg hover:shadow-2xl transition project-card scale-in" style="transition-delay: 0.4s;">
+                    <div class="h-64 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1485827404703-89b55fcc595e?w=800" alt="Robotics" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-2xl font-light mb-4 text-center border-b pb-3">TECHNOCORNER UGM 2025</h3>
+                        <p class="text-gray-600 font-inter text-sm leading-relaxed mb-6">
+                            Reached the top eight with a remote-controlled robot demonstrating advanced capabilities.
+                        </p>
+                        <div class="text-center">
+                            <a href="project-technocorner.html" class="inline-block border-2 border-gray-900 px-6 py-2 text-sm tracking-wider hover:bg-gray-900 hover:text-white transition transform hover:scale-105">
+                                Show More
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- My Activity Gallery Section -->
+    <section class="py-20 bg-white">
+        <div class="container mx-auto px-6">
+            <!-- Section Header -->
+            <div class="text-center mb-12 max-w-4xl mx-auto fade-in">
+                <h2 class="text-5xl md:text-6xl font-light mb-6">My Activity Gallery</h2>
+                <p class="text-gray-700 font-inter leading-relaxed">
+                    A collection of moments from my journey through competitions, projects, and organizational activities over the past few years.
+                </p>
+            </div>
+
+            <!-- Gallery Grid -->
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-7xl mx-auto">
+                <!-- Row 1 -->
+                <div class="aspect-square overflow-hidden rounded-lg shadow-lg hover:shadow-2xl transition gallery-item scale-in">
+                    <img src="image/PLN SustainAction 2025.png" alt="Activity 1" class="w-full h-full object-cover hover:scale-110 transition duration-500">
+                </div>
+                <div class="aspect-square overflow-hidden rounded-lg shadow-lg hover:shadow-2xl transition gallery-item scale-in" style="transition-delay: 0.1s;">
+                    <img src="image/galeri simaku6.png" alt="Activity 2" class="w-full h-full object-cover hover:scale-110 transition duration-500">
+                </div>
+                <div class="aspect-square overflow-hidden rounded-lg shadow-lg hover:shadow-2xl transition gallery-item scale-in" style="transition-delay: 0.2s;">
+                    <img src="image/TECHNODAY UNNES 2025.png" alt="Activity 3" class="w-full h-full object-cover hover:scale-110 transition duration-500">
+                </div>
+                <div class="aspect-square overflow-hidden rounded-lg shadow-lg hover:shadow-2xl transition gallery-item scale-in" style="transition-delay: 0.3s;">
+                    <img src="image/TECHNOCORNER UGM 2025.png" alt="Activity 4" class="w-full h-full object-cover hover:scale-110 transition duration-500">
+                </div>
+                
+                <!-- Row 2 -->
+                <div class="aspect-square overflow-hidden rounded-lg shadow-lg hover:shadow-2xl transition gallery-item scale-in" style="transition-delay: 0.4s;">
+                    <img src="image/foto pln.png" alt="Activity 5" class="w-full h-full object-cover hover:scale-110 transition duration-500">
+                </div>
+                <div class="aspect-square overflow-hidden rounded-lg shadow-lg hover:shadow-2xl transition gallery-item scale-in" style="transition-delay: 0.5s;">
+                    <img src="image/foto prc.png" alt="Activity 6" class="w-full h-full object-cover hover:scale-110 transition duration-500">
+                </div>
+                <div class="aspect-square overflow-hidden rounded-lg shadow-lg hover:shadow-2xl transition gallery-item scale-in" style="transition-delay: 0.6s;">
+                    <img src="image/foto beswan.jpeg" alt="Activity 7" class="w-full h-full object-cover hover:scale-110 transition duration-500">
+                </div>
+                <div class="aspect-square overflow-hidden rounded-lg shadow-lg hover:shadow-2xl transition gallery-item scale-in" style="transition-delay: 0.7s;">
+                    <img src="image/foto sto.jpeg" alt="Activity 8" class="w-full h-full object-cover hover:scale-110 transition duration-500">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-12">
+        <div class="container mx-auto px-6">
+            <div class="max-w-4xl mx-auto fade-in">
+                <!-- Social Media Links -->
+                <div class="flex justify-center items-center gap-6 mb-8">
+                    <!-- Instagram -->
+                    <a href="https://instagram.com/alyyyys_" target="_blank" rel="noopener noreferrer" 
+                    class="hover:text-pink-400 transition-all duration-300 transform hover:scale-125 hover:-translate-y-1">
+                        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                        </svg>
+                    </a>
+
+                    <!-- LinkedIn -->
+                    <a href="https://linkedin.com/in/muhammad-haidar-aly" target="_blank" rel="noopener noreferrer"
+                    class="hover:text-blue-400 transition-all duration-300 transform hover:scale-125 hover:-translate-y-1">
+                        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                        </svg>
+                    </a>
+
+                    <!-- GitHub -->
+                    <a href="https://github.com/AlyScripter" target="_blank" rel="noopener noreferrer"
+                    class="hover:text-gray-400 transition-all duration-300 transform hover:scale-125 hover:-translate-y-1">
+                        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                        </svg>
+                    </a>
+
+                    <!-- TikTok -->
+                    <a href="https://tiktok.com/@circlevbs" target="_blank" rel="noopener noreferrer"
+                    class="hover:text-cyan-400 transition-all duration-300 transform hover:scale-125 hover:-translate-y-1">
+                        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1-.1z"/>
+                        </svg>
+                    </a>
+                </div>
+
+                <!-- Copyright -->
+                <div class="text-center border-t border-gray-700 pt-8">
+                    <p class="text-sm font-inter tracking-wider text-gray-400">&copy; 2026 MY PORTFOLIO. All rights reserved.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+    
+
+    <script>
+        // ===== SCROLL ANIMATIONS =====
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                    
+                    // Trigger counter animation for stats
+                    if (entry.target.classList.contains('stat-item')) {
+                        const counter = entry.target.querySelector('.counter');
+                        animateCounter(counter);
+                    }
+                    
+                    // Stagger animation for skills
+                    if (entry.target.classList.contains('skills-container')) {
+                        const badges = entry.target.querySelectorAll('.skill-badge');
+                        badges.forEach((badge, index) => {
+                            setTimeout(() => {
+                                badge.style.opacity = '0';
+                                badge.style.transform = 'translateY(20px)';
+                                setTimeout(() => {
+                                    badge.style.transition = 'all 0.5s ease';
+                                    badge.style.opacity = '1';
+                                    badge.style.transform = 'translateY(0)';
+                                }, 50);
+                            }, index * 100);
+                        });
+                    }
+                }
+            });
+        }, observerOptions);
+
+        // Observe all animated elements
+        document.addEventListener('DOMContentLoaded', () => {
+            const animatedElements = document.querySelectorAll('.fade-in, .fade-in-left, .fade-in-right, .scale-in, .stagger-item, .image-reveal');
+            animatedElements.forEach(el => observer.observe(el));
+            
+            // Observe stat items
+            const statItems = document.querySelectorAll('.stat-item');
+            statItems.forEach(el => observer.observe(el));
+            
+            // Observe skills containers
+            const skillsContainers = document.querySelectorAll('.skills-container');
+            skillsContainers.forEach(el => observer.observe(el));
+        });
+
+        // ===== COUNTER ANIMATION =====
+        function animateCounter(element) {
+            const target = parseInt(element.getAttribute('data-target'));
+            const duration = 2000;
+            const increment = target / (duration / 16);
+            let current = 0;
+            
+            const timer = setInterval(() => {
+                current += increment;
+                if (current >= target) {
+                    element.textContent = target + (target === 20 ? '+' : target === 3 ? '×' : '');
+                    clearInterval(timer);
+                } else {
+                    element.textContent = Math.floor(current);
+                }
+            }, 16);
+        }
+
+        // ===== HEADER SCROLL EFFECT =====
+        let lastScroll = 0;
+        const header = document.querySelector('header');
+
+        window.addEventListener('scroll', () => {
+            const currentScroll = window.pageYOffset;
+            
+            if (currentScroll > 100) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+            
+            lastScroll = currentScroll;
+        });
+
+        // ===== PARALLAX EFFECT =====
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            const parallaxElements = document.querySelectorAll('.parallax-slow');
+            
+            parallaxElements.forEach(el => {
+                const speed = 0.5;
+                el.style.transform = `translateY(${scrolled * speed}px)`;
+            });
+        });
+
+        // ===== SLIDESHOW FUNCTIONALITY =====
+        let currentSlide = 1;
+        const totalSlides = 2;
+
+        function changeSlide() {
+            const slide1 = document.getElementById('slide1');
+            const slide2 = document.getElementById('slide2');
+            
+            if (currentSlide === 1) {
+                slide1.classList.remove('opacity-100');
+                slide1.classList.add('opacity-0');
+                slide2.classList.remove('opacity-0');
+                slide2.classList.add('opacity-100');
+                currentSlide = 2;
+            } else {
+                slide2.classList.remove('opacity-100');
+                slide2.classList.add('opacity-0');
+                slide1.classList.remove('opacity-0');
+                slide1.classList.add('opacity-100');
+                currentSlide = 1;
+            }
+        }
+
+        // Change slide every 5 seconds
+        setInterval(changeSlide, 5000);
+
+        // ===== MOBILE MENU TOGGLE =====
+        function toggleMenu() {
+            const menu = document.getElementById('mobileMenu');
+            menu.classList.toggle('hidden');
+        }
+
+        // ===== SMOOTH SCROLLING =====
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                    // Close mobile menu if open
+                    document.getElementById('mobileMenu').classList.add('hidden');
+                }
+            });
+        });
+
+        // ===== MOUSE PARALLAX EFFECT ON CARDS =====
+        const cards = document.querySelectorAll('.project-card, .gallery-item');
+        
+        cards.forEach(card => {
+            card.addEventListener('mousemove', (e) => {
+                const rect = card.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                
+                const centerX = rect.width / 2;
+                const centerY = rect.height / 2;
+                
+                const rotateX = (y - centerY) / 20;
+                const rotateY = (centerX - x) / 20;
+                
+                card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-10px)`;
+            });
+            
+            card.addEventListener('mouseleave', () => {
+                card.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) translateY(0)';
+            });
+        });
+
+        // ===== STAGGER ANIMATION FOR ORGANIZATIONAL EXPERIENCE =====
+        const staggerObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const staggerItems = entry.target.querySelectorAll('.stagger-item');
+                    staggerItems.forEach((item, index) => {
+                        setTimeout(() => {
+                            item.classList.add('active');
+                        }, index * 200);
+                    });
+                    staggerObserver.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const orgSection = document.querySelector('.py-20.bg-white:has(.stagger-item)');
+            if (orgSection) {
+                staggerObserver.observe(orgSection);
+            }
+        });
+    </script>
+</body>
+</html>
