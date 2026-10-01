@@ -1,5 +1,5 @@
 // User's CV Link
-export const CV_LINK = "https://drive.google.com/file/d/1zc0zpTiA52boXcaxbF2NFBh6pk8C7y-E/view?usp=sharing";
+export const CV_LINK = "https://drive.google.com/file/d/12u42Lp0ZrVEfaz7ztZGQ86KXhoTMq3x2/view?usp=sharing";
 
 export const USER_INFO = {
   name: "Muhammad Haidar Aly",
@@ -117,9 +117,7 @@ export const WORK_EXPERIENCES = [
     period: "Jun 2024 – Jun 2025",
     type: "Web Operations & Infrastructure",
     summary: "Administration, content pipeline, and technical maintenance of three organizational web platforms.",
-    bullets: [
-      "Managed and maintained 3 organizational websites using WordPress, handling content updates, publishing, and technical troubleshooting.",
-    ],
+    bullets: ["Managed and maintained 3 organizational websites using WordPress, handling content updates, publishing, and technical troubleshooting."],
     skills: ["WordPress", "Web Operations", "Content Management", "Technical Troubleshooting"],
   },
 ];
@@ -133,9 +131,7 @@ export const ORGANISASI = [
     period: "Jul 2025 – July 2026",
     badge: "Executive Leadership",
     summary: "Executive organizational governance, coordinating work plans and official agendas across board members.",
-    bullets: [
-      "Coordinated 8 organizational work plans and 36+ operational agendas across 90+ board members, maintaining project documentation and accountability schedules.",
-    ],
+    bullets: ["Coordinated 8 organizational work plans and 36+ operational agendas across 90+ board members, maintaining project documentation and accountability schedules."],
     skills: ["Governance", "Executive Coordination", "Documentation"],
   },
   {
@@ -145,9 +141,7 @@ export const ORGANISASI = [
     period: "Jun 2024 – Jun 2025",
     badge: "Departmental Governance",
     summary: "Supervised departmental operations, managed research schedules, and administered robotics competition preparation programs.",
-    bullets: [
-      "Supervised a team of 7 staff members and coordinated 5+ departmental programs within the Robotics Department.",
-    ],
+    bullets: ["Supervised a team of 7 staff members and coordinated 5+ departmental programs within the Robotics Department."],
     skills: ["Department Management", "Technical Coordination", "Team Leadership"],
   },
   {
@@ -204,7 +198,7 @@ export const ACHIEVEMENTS = [
     rank: "2nd Runner Up",
     category: "Scientific & Technology Essay",
     description: "Recognized for authoring a technical paper proposing innovative smart system architectures and sustainable engineering solutions.",
-    image: "image/foto pln.png",
+    image: "image/essay finalis.png",
   },
 ];
 
@@ -249,7 +243,7 @@ export const CERTIFICATIONS = [
 export const HARD_SKILLS = [
   "ROS (Robot Operating System)",
   "NVIDIA Jetson",
-  "LiDAR & Camera Sensor Integration",
+  "LiDAR & Depth Camera Sensor Integration",
   "Sensor Fusion (IMU, GPS, Odometry)",
   "Bird’s-Eye View (BEV) Visualization",
   "Microcontroller (ESP32/Arduino)",
@@ -264,14 +258,7 @@ export const HARD_SKILLS = [
   "WordPress",
 ];
 
-export const SOFT_SKILLS = [
-  "Leadership",
-  "Teamwork",
-  "Collaboration",
-  "Communication",
-  "Time Management",
-  "Creativity",
-];
+export const SOFT_SKILLS = ["Leadership", "Teamwork", "Collaboration", "Communication", "Time Management", "Creativity"];
 
 export const ACTIVITIES = [
   {
@@ -299,7 +286,7 @@ export const PROJECTS = [
     period: "Dec 2024 – Jun 2025",
     institution: "Politeknik Negeri Semarang",
     summary: "IoT-Based Ammonia Meter Innovation to Optimize Freshwater Broodstock Crayfish Cultivation at Ternak Lobster Semarang ID. Features real-time monitoring and control of ammonia levels, temperature, and pH.",
-    image: "image/PLN SustainAction 2025.png",
+    image: "image/amofit.png",
     tags: ["Internet of Things (IoT)", "Embedded Systems", "Sensors", "Aquaculture"],
     overview: [
       "Inovasi Amonia Meter Berbasis IoT guna Mengoptimalisasi Budidaya Lobster Indukan Air Tawar di Ternak Lobster Semarang ID (Dec 2024 – Jun 2025).",
@@ -316,14 +303,8 @@ export const PROJECTS = [
       "Integrated specialized sensor probes for ammonia, pH, and temperature detection",
       "Provided continuous telemetry monitoring to maintain stable water parameters for maximum crayfish growth",
     ],
-    results: [
-      "Successfully enabled aquaculture partners to accurately monitor and regulate broodstock water quality.",
-    ],
-    gallery: [
-      "image/PLN SustainAction 2025.png",
-      "image/foto pln.png",
-      "image/foto sto.jpeg",
-    ],
+    results: ["Successfully enabled aquaculture partners to accurately monitor and regulate broodstock water quality."],
+    gallery: ["image/amofit.png", "image/amofit 1.jpeg", "image/amofit 2.jpeg"],
   },
   {
     id: "sitama-polines",
@@ -332,8 +313,9 @@ export const PROJECTS = [
     period: "Sep 2024 – Feb 2025",
     institution: "Politeknik Negeri Semarang",
     contributors: "Muhammad Januar, Zulvikar Kharisma...",
-    summary: "An academic management platform developed for the Department of Electrical Engineering at Politeknik Negeri Semarang, streamlining the administration, supervision, and reporting of students' internship and final project activities.",
-    image: "image/Simaku.png",
+    summary:
+      "An academic management platform developed for the Department of Electrical Engineering at Politeknik Negeri Semarang, streamlining the administration, supervision, and reporting of students' internship and final project activities.",
+    image: "image/sitama.jpg ",
     tags: ["Laravel", "MySQL", "Web Platform", "Academic Management"],
     overview: [
       "Sistem Informasi Tugas Akhir dan Magang Mahasiswa (SITAMA) Polines V2 (Sep 2024 – Feb 2025).",
@@ -350,14 +332,8 @@ export const PROJECTS = [
       "Designed centralized submission portals, progress tracking, and digital evaluation forms",
       "Implemented role-based dashboards tailored for students, academic advisors, and administrative coordinators",
     ],
-    results: [
-      "Successfully streamlined student internship and final project administration across the Department of Electrical Engineering.",
-    ],
-    gallery: [
-      "image/Simaku.png",
-      "image/galeri simaku1.png",
-      "image/galeri simaku2.png",
-    ],
+    results: ["Successfully streamlined student internship and final project administration across the Department of Electrical Engineering."],
+    gallery: ["image/sitama 1.jpg", "image/sitama 2.jpg", "image/sitama 3.jpg"],
   },
   {
     id: "fitverse",
@@ -366,7 +342,7 @@ export const PROJECTS = [
     period: "Jun 2026 – Jul 2026",
     institution: "Politeknik Negeri Semarang",
     summary: "FitVerse: Platform Fitness Sosial Berbasis Teknologi sebagai Solusi Gaya Hidup Aktif dan Sehat. Engineered with user interface and user experience design principles.",
-    image: "image/slideshow1.png",
+    image: "image/fitverse.jpeg",
     tags: ["User Interface Design", "User Experience Design (UED)", "Product Design", "Social Fitness"],
     overview: [
       "FitVerse: Social Fitness Platform Powered by Technology (Jun 2026 – Jul 2026).",
@@ -383,13 +359,8 @@ export const PROJECTS = [
       "Engineered high-fidelity UI/UX design systems focused on user motivation and social accountability",
       "Created intuitive mobile-first interfaces for activity progress tracking and community challenges",
     ],
-    results: [
-      "Delivered a comprehensive UI/UX design specification and interactive prototype for the FitVerse platform.",
-    ],
-    gallery: [
-      "image/slideshow1.png",
-      "image/slideshow2.png",
-    ],
+    results: ["Delivered a comprehensive UI/UX design specification and interactive prototype for the FitVerse platform."],
+    gallery: ["image/fitverse 1.png", "image/fitverse 2.png", "image/fitverse 3.png"],
   },
   {
     id: "tasih-cafe-mis",
@@ -399,7 +370,7 @@ export const PROJECTS = [
     institution: "Politeknik Negeri Semarang",
     contributors: "Ammar",
     summary: "Comprehensive Management Information System (MIS) designed from the ground up for Tasih Cafe, streamlining point-of-sale (POS) operations, real-time inventory management, and sales performance tracking.",
-    image: "image/galeri simaku3.png",
+    image: "image/tasih 3.jpg",
     tags: ["Systems Analysis", "User Research", "MIS Design", "UI/UX Prototyping"],
     overview: [
       "Tasih Cafe – End-to-End Management Information System Design (Sep 2025 – Jan 2026).",
@@ -416,14 +387,8 @@ export const PROJECTS = [
       "Structured data flow diagrams and relational schemas linking POS checkout, inventory depletion, and daily auditing",
       "Developed high-fidelity UI/UX prototypes for touch-friendly cashier interfaces and managerial analytics",
     ],
-    results: [
-      "Delivered complete end-to-end system analysis and design architecture for Tasih Cafe's operational modernization.",
-    ],
-    gallery: [
-      "image/galeri simaku3.png",
-      "image/galeri simaku4.png",
-      "image/galeri simaku5.png",
-    ],
+    results: ["Delivered complete end-to-end system analysis and design architecture for Tasih Cafe's operational modernization."],
+    gallery: ["image/tasih.jpg", "image/tasih 1.jpg", "image/tasih 2.jpg"],
   },
   {
     id: "iot-smart-parking",
@@ -433,7 +398,7 @@ export const PROJECTS = [
     institution: "Politeknik Negeri Semarang",
     contributors: "Prabaswara Shafa and Azka",
     summary: "IoT-based Smart Parking System using ESP32 and HC-SR04 ultrasonic sensors to monitor parking slot availability in real time with web dashboard, achieving 96–97% accuracy and 1–3s response time.",
-    image: "image/foto prc.png",
+    image: "image/parkir 1.jpg",
     tags: ["Internet of Things (IoT)", "ESP32", "Ultrasonic Sensors", "Real-Time Monitoring"],
     overview: [
       "IoT-Based Smart Parking System with Real-Time Monitoring Using ESP32 and Ultrasonic Sensors (Sep 2025 – Dec 2025).",
@@ -450,13 +415,8 @@ export const PROJECTS = [
       "Implemented threshold-based distance filtering on HC-SR04 ultrasonic sensors coupled with physical LED status cues",
       "Engineered an optimized data transmission pipeline that updates web dashboards exclusively when slot availability changes",
     ],
-    results: [
-      "Achieved 96–97% detection accuracy with 1–3 second response time, validating an efficient and cost-effective parking automation solution.",
-    ],
-    gallery: [
-      "image/foto prc.png",
-      "image/TECHNOCORNER UGM 2025.png",
-    ],
+    results: ["Achieved 96–97% detection accuracy with 1–3 second response time, validating an efficient and cost-effective parking automation solution."],
+    gallery: ["image/parkir 1.jpg", "image/parkir 2.jpg", "image/parkir 3.jpg"],
   },
   {
     id: "neltara-kmeans",
@@ -466,7 +426,7 @@ export const PROJECTS = [
     institution: "Politeknik Negeri Semarang",
     contributors: "Jhoan",
     summary: "Pemanfaatan Algoritma K-Means Untuk Penentuan Zona Strategis Penangkapan Ikan Berdasarkan Variabilitas Suhu Permukaan Laut dan Konsentrasi Klorofil-a guna meningkatkan efisiensi dan keselamatan nelayan.",
-    image: "image/slideshow2.png",
+    image: "image/neltara.png",
     tags: ["Deep Learning", "k-means clustering", "AI & ML", "Oceanography"],
     overview: [
       "NELTARA : Pemanfaatan Algoritma K-Means Untuk Penentuan Zona Strategis Penangkapan Ikan Berdasarkan Variabilitas Suhu Permukaan Laut dan Konsentrasi Klorofil-a (Sep 2025 – Oct 2025).",
@@ -483,13 +443,8 @@ export const PROJECTS = [
       "Classified high-potential pelagic fish feeding grounds based on oceanic upwelling signatures and thermal gradients",
       "Developed a clear visualization interface allowing fishermen to target high-probability fishing zones directly",
     ],
-    results: [
-      "Demonstrated significant potential to optimize marine fuel efficiency and enhance fisherman livelihoods through AI-driven spatial intelligence.",
-    ],
-    gallery: [
-      "image/slideshow2.png",
-      "image/TECHNODAY UNNES 2025.png",
-    ],
+    results: ["Demonstrated significant potential to optimize marine fuel efficiency and enhance fisherman livelihoods through AI-driven spatial intelligence."],
+    gallery: ["image/neltara.png"],
   },
   {
     id: "simaku",
@@ -516,16 +471,8 @@ export const PROJECTS = [
       "Created RESTful APIs supporting billing schedules, verification approval trees, and appeal submissions",
       "Delivered an interactive administrative dashboard for real-time transaction reconciliation",
     ],
-    results: [
-      "Streamlined institutional payment verification and financial reporting across academic semesters.",
-    ],
-    gallery: [
-      "image/Simaku.png",
-      "image/galeri simaku1.png",
-      "image/galeri simaku2.png",
-      "image/galeri simaku5.png",
-      "image/galeri simaku6.png",
-    ],
+    results: ["Streamlined institutional payment verification and financial reporting across academic semesters."],
+    gallery: ["image/Simaku.png", "image/galeri simaku1.png", "image/galeri simaku2.png", "image/galeri simaku5.png", "image/galeri simaku6.png"],
   },
   {
     id: "lynk-game",
@@ -535,7 +482,7 @@ export const PROJECTS = [
     institution: "Politeknik Negeri Semarang",
     contributors: "Bagus, Muhammad Dzaky and 1 other",
     summary: "LYNX is a fantasy adventure game in Unity centered around King Lynx, an eccentric ruler collecting mystical cats across hidden kingdoms seeking unrivaled strength and immortality.",
-    image: "image/galeri simaku6.png",
+    image: "image/lynk 2.jpg",
     tags: ["Unity", "Game Development", "C#", "Gameplay Mechanics"],
     overview: [
       "LYNK GAME (Mar 2025 – Jul 2025).",
@@ -552,13 +499,8 @@ export const PROJECTS = [
       "Designed King Lynx character movement controllers and custom interaction triggers for mythical cat discovery",
       "Created rich level environments with tuned audio-visual effects reflecting the fantasy narrative lore",
     ],
-    results: [
-      "Produced a playable fantasy adventure game demo showcasing polished gameplay mechanics and storytelling.",
-    ],
-    gallery: [
-      "image/galeri simaku6.png",
-      "image/TECHNODAY UNNES 2025.png",
-    ],
+    results: ["Produced a playable fantasy adventure game demo showcasing polished gameplay mechanics and storytelling."],
+    gallery: ["image/lynk 1.jpg", "image/lynk 3.jpg", "image/lynk 4.jpg", "image/lynk 5.jpg"],
   },
 ];
 
@@ -567,8 +509,8 @@ export const GALLERY_IMAGES = [
   "image/galeri simaku6.png",
   "image/TECHNODAY UNNES 2025.png",
   "image/TECHNOCORNER UGM 2025.png",
-  "image/foto pln.png",
+  "image/brin.jpeg",
   "image/foto prc.png",
-  "image/galeri simaku1.png",
+  "image/TC 2026.jpeg",
   "image/foto sto.jpeg",
 ];

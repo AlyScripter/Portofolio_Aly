@@ -69,7 +69,7 @@ export default function Activity() {
                 
                 {/* Visual Glass Tag */}
                 <div className="absolute top-4 right-4 px-3 py-1 bg-black/60 backdrop-blur-md rounded-full text-[9px] font-mono tracking-widest text-zinc-300 border border-white/5 uppercase">
-                  Robotics Hub
+                  OUR TEAM
                 </div>
               </div>
 

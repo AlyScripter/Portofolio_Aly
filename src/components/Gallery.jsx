@@ -11,10 +11,11 @@ export default function Gallery() {
     if (path.includes("TECHNODAY")) return "UNNES Technoday 2025 // Top 16 Robotic Run";
     if (path.includes("TECHNOCORNER")) return "UGM Technocorner 2025 // Robot Arena";
     if (path.includes("simaku6")) return "SIMAKU Financial Management Workspace";
-    if (path.includes("simaku1")) return "SIMAKU System Architecture & Dashboard";
-    if (path.includes("pln.png")) return "National Grand Finals Presentation Pitch";
+    // if (path.includes("pln.png")) return "Project survey with PLN Central Java";
     if (path.includes("prc.png")) return "Polines Robotic Contest Hardware & Assembly";
     if (path.includes("sto")) return "Organizational Seminar & Leadership Assembly";
+    if (path.includes("brin")) return "internship at the BRIN RI intelligent mechatronics research center";
+    if (path.includes("TC 2026")) return "Technocorner 2026 All Team POLINES";
     return "Robotics & Engineering Collaboration";
   };
 
